@@ -73,8 +73,8 @@ require_once("conn/conexion.php");
                         data-dir="<?php echo $row['DIRECCION']?>" 
 					            	data-estatus="<?php echo $row['ESTATUS']?>"
                          
-                         ><i class='glyphicon glyphicon-edit'></i> Modificar</button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_MIEMBRO']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
+                         ><i class='nav-icon fa fa-pencil'></i></button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_MIEMBRO']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
 					</td>
 				</tr>
 				<?php

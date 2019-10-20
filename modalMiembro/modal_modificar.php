@@ -15,8 +15,8 @@
           <div class="form-group">
           <label for="lalo"  class="control-label">Cédula</label>
               <input type="text" class="form-control" id="cedula" name="cedula" placeholder="Cédula:" required autocomplete="off" >
-              <input type="text" class="form-control" id="id" name="id">
-              <input type="text" class="form-control" id="usr" name="usr">
+              <input type="hidden" class="form-control" id="id" name="id">
+              <input type="hidden" class="form-control" id="usr" name="usr">
           </div>
 
           <div class="form-group">

@@ -3,8 +3,8 @@
 //Variables para la conexión
 $servername = "localhost";
 $username = "root";
-$password = "Ygh8b77t";
-//$password = "";
+//$password = "Ygh8b77t";
+$password = "";
 $dbname = "space";
 
 # conectare la base de datos

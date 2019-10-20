@@ -10,7 +10,7 @@ $ano =date("y");
 $t = date("H:i:s");
 $t = explode(":", $t); 
 
-$codigo ='PRO_'.$dia.''.$t[0].''.$t[1].''.$t[2];
+$codigo ='IMG_'.$dia.$mes.$ano.$t[0].$t[1].$t[2];
 
 //Revienta el nombre del archivo donde encuentre un punto
 $aux =explode('.', $_FILES["file"]["name"]);
@@ -19,7 +19,7 @@ $file_extension = end($aux);
 
 
 // Ubicación del archivo
-$ruta = 'C:/wamp/www/space/img/productos/';
+$ruta = 'img/productos/';
 
 $foto = $ruta.$codigo.'.'.$file_extension;
 $articulo=$codigo.'.'.$file_extension;

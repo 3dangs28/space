@@ -52,8 +52,8 @@ require_once("conn/conexion.php");
                         data-id="<?php echo $row['ID_CAT']?>"
                         data-cate="<?php echo $row['NOMBRE_CAT']?>" 
                         data-estatus="<?php echo $row['ESTATUS']?>" 
-                        ><i class='glyphicon glyphicon-edit'></i> Modificar</button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_CAT']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
+                        ><i class='nav-icon fa fa-pencil'></i></button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_CAT']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
 					</td>
 				</tr>
 				<?php

@@ -37,8 +37,8 @@ require_once("conn/conexion.php");
 					<td><?php echo $row['DESCRIPCION'];?></td>
 	
 					<td>
-						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_PERFIL']?>" data-perfil="<?php echo $row['PERFIL']?>" data-descripcion="<?php echo $row['DESCRIPCION']?>" ><i class='glyphicon glyphicon-edit'></i> Modificar</button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_PERFIL']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
+						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_PERFIL']?>" data-perfil="<?php echo $row['PERFIL']?>" data-descripcion="<?php echo $row['DESCRIPCION']?>" ><i class='nav-icon fa fa-pencil'></i> </button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_PERFIL']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
 					</td>
 				</tr>
 				<?php

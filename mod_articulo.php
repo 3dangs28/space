@@ -1,16 +1,19 @@
 <?php 
- include("inc/librerias.php");
-
-
-require_once("conn/conexion.php");
+include("inc/librerias.php");
 ?>
 	 
+
+
+
   
-     <script>
+<script>
 function goBack() {
-  window.history.back();
+  window.location ='/space/item.php';
 }
 </script>
+
+</div>
+  <!-- /.content-wrapper -->
 
      <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
@@ -21,6 +24,100 @@ function goBack() {
 
 
 <div class="content-wrapper">
+
+
+
+
+<?php  
+require_once("conn/conexion.php");  
+if(isset($_POST['SubmitButton'])){ //check if form was submitted
+ 
+	/*Inicia validacion del lado del servidor*/
+	if (empty($_POST['id'])) {
+    $errors[] = "ID vacío";
+} else if (empty($_POST['cate'])){
+$errors[] = "Categoría vacío";
+} else if (empty($_POST['nombre'])){
+$errors[] = "Nombre vacío";
+} else if (empty($_POST['descri'])){
+$errors[] = "Descripción vacío";
+} else if (empty($_POST['cantidad'])){
+$errors[] = "Cantidad vacío";
+} else if (empty($_POST['precio'])){
+$errors[] = "Precio vacío";
+} else if (empty($_POST['estatus'])){
+$errors[] = "Estatus vacío";
+} else if (
+!empty($_POST['id']) &&
+!empty($_POST['cate']) && 
+!empty($_POST['nombre']) && 
+!empty($_POST['descri']) && 
+!empty($_POST['cantidad']) && 
+!empty($_POST['precio']) && 
+!empty($_POST['estatus'])
+
+){
+
+// escaping, additionally removing everything that could be (html/javascript-) code
+
+
+
+$id=intval($_POST['id']);
+$cate=intval($_POST['cate']);
+$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
+$descri=mysqli_real_escape_string($con,(strip_tags($_POST["descri"],ENT_QUOTES)));
+$precio=mysqli_real_escape_string($con,(strip_tags($_POST["precio"],ENT_QUOTES)));
+$cantidad=mysqli_real_escape_string($con,(strip_tags($_POST["cantidad"],ENT_QUOTES)));
+ $estatus=intval($_POST['estatus']);
+
+
+$sql="UPDATE ARTICULOS SET ID_CAT='".$cate."', NOMBRE='".$nombre."', PRECIO='".$precio."', CANTIDAD='".$cantidad."', ESTATUS='".$estatus."'	WHERE ID_ARTICULO='".$id."'";
+$query_update = mysqli_query($con,$sql);
+if ($query_update){
+ $messages[] = "Los datos han sido actualizados satisfactoriamente.";
+} else{
+ $errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+}
+} else {
+$errors []= "Error desconocido.";
+}
+
+if (isset($errors)){
+
+?>
+<div class="alert alert-danger" role="alert">
+ <button type="button" class="close" data-dismiss="alert">&times;</button>
+   <strong>Error!</strong> 
+   <?php
+     foreach ($errors as $error) {
+         echo $error;
+       }
+     ?>
+</div>
+<?php
+}
+if (isset($messages)){
+ 
+ ?>
+ <div class="alert alert-success" role="alert">
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+     <strong>¡Bien hecho!</strong>
+     <?php
+       foreach ($messages as $message) {
+           echo $message;
+         }
+       ?>
+ </div>
+ <?php
+}
+
+?>
+ <?php
+}    
+?>
+
+
+
 
 
 <section class="content-header">
@@ -40,7 +137,8 @@ function goBack() {
 
 
 <?php 
-$codigo = $_GET['codigo'];
+
+$codigo = $_GET['id'];
 
 $sql = 'SELECT t1.ID_ARTICULO,t1.ID_CAT, t1.NOMBRE,t1.DESCRIPCION, t2.NOMBRE_CAT,t1.CANTIDAD, t1.PRECIO, t1.IMG_RUTA, t1.ESTATUS
 				
@@ -68,9 +166,9 @@ $estatus =  $row['ESTATUS'];
 
 <section class = "content">
   
-     
-<form id="actualidarDatos">
 
+
+<form action="" method="post"> 
    
 
 <div class="form-group">
@@ -94,17 +192,17 @@ $estatus =  $row['ESTATUS'];
 
 
 
-
+       <div id="datos_ajax"></div>   
 
           <div class="form-group">
             <label for="codigo" class="control-label">Nombre:</label>
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del item" value="<?php echo $nombre;?>" required maxlength="2">
-			<input type="text" class="form-control" id="id" name="id" value="<?php echo $codigo;?>">
+		       	<input type="hidden" class="form-control" id="id" name="id" value="<?php echo $codigo;?>">
           </div>
 
         
           <div class="form-group">
-         <label for="nombre1" class="control-label">Descripcion:</label>
+         <label for="nombre1" class="control-label">Descripción:</label>
            <input type="text" class="form-control" id="descri" name="descri" placeholder="Escriba la descripción:" value="<?php echo $descri;?>"   required autocomplete="off"   >
         </div>
 
@@ -141,8 +239,9 @@ $estatus =  $row['ESTATUS'];
 
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Actualizar datos</button>
-      </div>
+      
+        <button type="submit" name="SubmitButton" class="btn btn-primary">Actualizar datos</button>
+    </div>
     </div>
 
 </form>
@@ -150,10 +249,6 @@ $estatus =  $row['ESTATUS'];
 
 
 </section>
-</div>
-  <!-- /.content-wrapper -->
-
-
 
 
 

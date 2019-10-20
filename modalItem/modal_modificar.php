@@ -9,7 +9,7 @@
                     </button>
                 </div>
       <div class="modal-body">
-      <div id="datos_ajax"></div>
+      <div id="datos_ajax"></div> 
    
       <div class="form-group">
           <label for="lalo"  class="control-label">Estatus</label>

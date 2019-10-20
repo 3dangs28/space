@@ -52,6 +52,8 @@
         <label for="lalo"  class="control-label">Contraseña</label>
            <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" required autocomplete="off" >
         </div>
+
+        
           <div class="form-group">
           <label for="lalo"  class="control-label">Estatus</label>
 				                            <select class="form-control" id="estatus" name="estatus" required>

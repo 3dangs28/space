@@ -27,8 +27,8 @@ require_once("conn/conexion.php");
             <th>Cantidad</th>
             <th>Precio</th>
 		      	<th>Estatus</th>	
-						<th>modificar</th>
-						<th>subir,eliminar</th>
+						<th>Modificar</th>
+						<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -56,10 +56,11 @@ require_once("conn/conexion.php");
 		
 					 </td>
 					 <td>
-					 <form action="prueba.php" method="get" >
-						<input  type="hidden" name="codigo" id="codigo" value="<?php echo $row['ID_ARTICULO']?>" readonly >
-						<button type="submit"><i class='nav-icon fa fa-pencil'></i></button>
-					</form>    
+					 <form action="mod_articulo.php" method="get" >
+						<input  type="hidden" name="id" id="id" value="<?php echo $row['ID_ARTICULO']?>" readonly >
+						<button type="submit" class="btn btn-info"><i class='nav-icon fa fa-pencil'></i></button>
+					</form>   
+				
 					</td>
 					<td>
 

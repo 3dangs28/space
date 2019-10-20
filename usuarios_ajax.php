@@ -27,13 +27,6 @@ require_once("conn/conexion.php");
 		$query = mysqli_query($con,$sql);
 
 
-		$consulta = 'SELECT ID_PERFIL, NOMBRE FROM PERFILES';
-	  $aux = mysqli_query($con,$consulta);
-
-	while($paquete = mysqli_fetch_array($aux)){
-		$gato = $paquete['NOMBRE'];
-	}
-
 		if ($numrows>0){
 			?>
 		<table ID="example1" class="table table-bordered">
@@ -70,17 +63,13 @@ require_once("conn/conexion.php");
 										;?>
 										</td>
 					<td>
-                        <button type="button" class="btn btn-info" data-toggle="modal" 
-												data-target="#dataUpdate" 
-												data-id="<?php echo $row['ID_USR']?>" 
-                        data-perfil="<?php echo $row['ID_PERFIL']?>" 
-                        data-nombre="<?php echo $row['NOMBRE']?>"
-												data-apellido="<?php echo $row['APELLIDO']?>" 
-												data-usr="<?php echo $row['USUARIO']?>"
-												data-estatus="<?php echo $row['ESTATUS']?>"
-                         
-                         ><i class='glyphicon glyphicon-edit'></i> Modificar</button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_USR']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
+
+					<form action="mod_usuario.php" method="get" >
+						<input  type="hidden" name="id" id="id" value="<?php echo $row['ID_PERFIL']?>" readonly >
+						<button type="submit" class="btn btn-info"><i class='nav-icon fa fa-pencil'></i></button>
+					</form>
+
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_USR']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
 					</td>
 				</tr>
 				<?php
